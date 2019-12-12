@@ -2,6 +2,7 @@ const app = new Vue({
     el: '#app',
     data: {
         posts: [],
+        users: [],
         baseUrl: 'https://jsonplaceholder.typicode.com/',
         page: 1,
         perPage: 10,
@@ -11,9 +12,22 @@ const app = new Vue({
     },
     methods: {
         getPosts() {
-            axios.get(this.baseUrl + 'comments')
+            axios.get(this.baseUrl + 'posts')
                 .then(response => {
                     this.posts = response.data;
+                })
+                .catch(response => {
+                    console.log(error);
+                    this.errored = true
+                })
+                .finally(() => this.loading = false)
+        },
+        getUsers() {
+            axios.get(this.baseUrl + 'users')
+                .then(response => {
+                    this.users = response.data.map(el => el.name);
+
+
                 })
                 .catch(response => {
                     console.log(error);
@@ -40,6 +54,7 @@ const app = new Vue({
             return posts.slice(from, to);
         },
 
+        // Zmienić tutaj bo już nie ma więcej niż 100 postów
         readMore(post) {
             let number = ""
             let string = post.id.toString();
@@ -67,12 +82,10 @@ const app = new Vue({
                 text.textContent = post.body.slice(0, 30)
                 text.classList.remove('open')
                 seeMore.textContent = "Zobacz więcej..."
-
             } else {
                 text.classList.add("open");
                 text.textContent = post.body
                 seeMore.textContent = "Zobacz mniej..."
-
             }
         },
         deletePost(post) {
@@ -84,7 +97,9 @@ const app = new Vue({
     },
     created() {
         this.getPosts();
+        this.getUsers();
         this.shortTitle()
+
     },
     watch: {
         posts() {
@@ -93,6 +108,15 @@ const app = new Vue({
     },
     computed: {
         displayedPosts() {
+            // dodawanie klasy aktywnej - ogarnąć bo nie działa dobrze 
+            let pages = document.querySelectorAll('.pagination > button')
+            pages.forEach(el => el.classList.remove('active'))
+            if (this.page == 1) {
+                pages[1].classList.add('active')
+            } else {
+                pages[1].classList.add('active')
+            }
+            // koniec 
             return this.paginate(this.posts);
         }
     },

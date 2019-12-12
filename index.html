@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <div id="app">
+    <div class="app" id="app">
         <h2 class="header">Api posts - zadanie rekrutacyjne</h2>
         <h1 class="header">Krzysztof Siek</h1>
         <section v-if="errored">
@@ -19,30 +19,30 @@
         </section>
         <div v-else class="container">
             <div v-if="loading">Loading...</div>
-            <div v-else class="post" v-for="post in displayedPosts">
+            <div v-else class="post" v-for="post in displayedPosts" :key="post.id">
                 <div class="post-body">
                     <div class="post-title">
-                        <span class="post-id"> {{post.id}}</span>
-                        <h5 class="post-name"> {{post.name}} </h5>
-                        <span class="post-autor">{{post.email}}</span>
+                        <h5 class="post-name"> {{post.title}} </h5>
+                        <p class="post-autor">Author: <span> {{users[post.userId - 1]}}</span></p>
                         <span class="close-button" @click="deletePost(post)"><i
                                 class="fas fa-window-close fa-2x"></i></span>
                     </div>
                     <div class="post-content">
                         <p class="short-content">{{post.body.slice(0, 30)}}...</p>
-                        <p class="seeMore" @click="readMore(post)">Zobacz więcej...</p>
+                        <button class="seeMore" @click="readMore(post)">Zobacz więcej...</button>
                     </div>
                 </div>
             </div>
         </div>
         <div class="pagination">
             <button v-if="page != 1" @click="page--">Previous
-            </button> <button v-for="pageNumber in pages.slice(page-1, page+5)" @click="page = pageNumber">
+            </button> <button v-for="pageNumber in pages.slice(page-1, page+2)" @click="page = pageNumber">
                 {{pageNumber}}
             </button>
             <button @click="page++" v-if="page < pages.length" class="btn btn-sm btn-outline-secondary"> Next
             </button>
         </div>
+        <h2>{{page}}</h2>
     </div>
 
 

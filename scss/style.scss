@@ -2,6 +2,8 @@
 @import "container";
 @import "post";
 @import "pagination";
+@import url("https://fonts.googleapis.com/css?family=Raleway:400,700&display=swap&subset=latin-ext");
+
 
 
 * {
@@ -9,6 +11,17 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+.app {
+    padding: 20px;
+    background-image: linear-gradient(45deg,rgba(33, 206, 119, 0.75),rgba(15, 12, 199, 0.562)),url('./img/bg.jpg');
+    background-size: cover;
+    background-position: center;
+    font-family: 'Raleway', sans-serif;
+   
+}
+
+
 
 
 
