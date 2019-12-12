@@ -11,12 +11,14 @@
     box-shadow: -7px -5px 5px 0px rgba(0,0,0,0.75);
     position: relative;
     margin: 40px;
-    @media(min-width:576px) {
-        min-height: 200px;
-    }
-    &:hover {
-        transform: translateY(-5px);
-    }
+        @media(min-width:576px) {
+            min-height: 200px;
+         }
+
+        &:hover {
+            transform: translateY(-5px);
+        }
+        
     .post-title {
         display: flex;
         flex-direction: column;

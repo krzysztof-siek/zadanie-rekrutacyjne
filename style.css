@@ -4,6 +4,7 @@
   padding: 20px;
   display: -ms-grid;
   display: grid;
+  margin: 0 auto;
   -ms-grid-columns: 1fr;
       grid-template-columns: 1fr;
 }
