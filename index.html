@@ -1,22 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>API posts - zadanie rekrutacyjne</title>
+    <title>API Post - Zadanie rekrutacyjne</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <div id="app">
-        <h1>{{message}}</h1>
+        <div class="container">
+            <div class="post" v-for="post in displayedPosts">
+                <div class="post-body">
+                    <div class="post-title">
+                        <h5><span> {{post.id}}</span> {{post.name}}</h5>
+                    </div>
+                    <p class="post-content">{{post.body.slice(0, 30)}}...</p>
+                    <button @click="readMore(post)">Zobacz więcej...</button>
+                    <h5 class="post-autor">{{post.email}}</h5>
+                    <button>Close</button>
+                </div>
+            </div>
+
+            <!-- Loop through the pages array to display each page number       -->
+            <div class="pagination">
+                <button v-if="page != 1" @click="page--">Previous
+                </button> <button v-for="pageNumber in pages.slice(page-1, page+5)" @click="page = pageNumber">
+                    {{pageNumber}}
+                </button>
+                <button @click="page++" v-if="page < pages.length" class="btn btn-sm btn-outline-secondary"> Next
+                </button>
+            </div>
+        </div>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.js"></script>
+    <script src="app.js"></script>
 </body>
-
-
-<script src="https://cdn.jsdelivr.net/npm/vue"></script>
-<script src="app.js"></script>
 
 </html>
