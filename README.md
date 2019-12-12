@@ -6,3 +6,4 @@
 # JS
 # Axios
 # VUEjs
+live : https://krzysztof-siek.github.io/zadanie-rekrutacyjne/
