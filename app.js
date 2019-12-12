@@ -7,6 +7,8 @@ const app = new Vue({
         perPage: 10,
         pages: [],
         isActive: false,
+        errored: false,
+        loading: true,
     },
     methods: {
         getPosts() {
@@ -16,7 +18,9 @@ const app = new Vue({
                 })
                 .catch(response => {
                     console.log(response);
-                });
+                    this.errored = true
+                })
+                .finally(() => this.loading = false)
         },
         shortTitle() {
             let name = this.posts.slice(1, 10)
@@ -38,16 +42,42 @@ const app = new Vue({
         },
 
         readMore(post) {
-            let text = document.querySelectorAll(".short-content")[post.id - 1];
+            let id = ""
+            if (post.id <= 10) {
+                id = post.id - 1
+            } else if (post.id > 10 && post.id <= 20) {
+                id = post.id - 11
+            } else if (post.id > 20 && post.id <= 30) {
+                id = post.id - 21
+            } else if (post.id > 30 && post.id <= 40) {
+                id = post.id - 31
+            } else if (post.id > 40 && post.id <= 50) {
+                id = post.id - 41
+            } else if (post.id > 50 && post.id <= 60) {
+                id = post.id - 50
+            }
+
+            let text = document.querySelectorAll(".short-content")[id];
+            let seeMore = document.querySelectorAll(".seeMore")[id];
+
 
             if (text.classList.contains('open')) {
                 text.textContent = post.body.slice(0, 30)
                 text.classList.remove('open')
+                seeMore.textContent = "Zobacz więcej..."
 
             } else {
                 text.classList.add("open");
                 text.textContent = post.body
+                seeMore.textContent = "Zobacz mniej..."
+
             }
+        },
+        deletePost(post) {
+            alert(`UWAGA!  Post ${post.name} zostaje usunięty!`)
+            fetch(`https://jsonplaceholder.typicode.com/comments/${post.id}`, {
+                method: 'DELETE'
+            })
 
         }
     },

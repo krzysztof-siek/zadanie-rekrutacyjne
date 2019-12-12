@@ -12,37 +12,40 @@
 
 <body>
     <div id="app">
-        <div class="container">
-            <h2 class="header">Api posts - zadanie rekrutacyjne</h2>
-            <h1 class="header">Krzysztof Siek</h1>
-            <div class="post" v-for="post in displayedPosts">
+        <h2 class="header">Api posts - zadanie rekrutacyjne</h2>
+        <h1 class="header">Krzysztof Siek</h1>
+        <section v-if="errored">
+            <p>Przepraszamy, ale nie możemy wyświetlić w tej chwili postów. Prosimy spróbować później...</p>
+        </section>
+        <div v-else class="container">
+            <div v-if="loading">Loading...</div>
+            <div v-else class="post" v-for="post in displayedPosts">
                 <div class="post-body">
                     <div class="post-title">
                         <span class="post-id"> {{post.id}}</span>
                         <h5 class="post-name"> {{post.name}} </h5>
                         <span class="post-autor">{{post.email}}</span>
-                        <span class="close-button"><i class="fas fa-window-close fa-2x"></i></span>
+                        <span class="close-button" @click="deletePost(post)"><i
+                                class="fas fa-window-close fa-2x"></i></span>
                     </div>
                     <div class="post-content">
                         <p class="short-content">{{post.body.slice(0, 30)}}...</p>
                         <p class="seeMore" @click="readMore(post)">Zobacz więcej...</p>
                     </div>
-
-
                 </div>
             </div>
-
-            <!-- Loop through the pages array to display each page number       -->
-            <div class="pagination">
-                <button v-if="page != 1" @click="page--">Previous
-                </button> <button v-for="pageNumber in pages.slice(page-1, page+5)" @click="page = pageNumber">
-                    {{pageNumber}}
-                </button>
-                <button @click="page++" v-if="page < pages.length" class="btn btn-sm btn-outline-secondary"> Next
-                </button>
-            </div>
+        </div>
+        <div class="pagination">
+            <button v-if="page != 1" @click="page--">Previous
+            </button> <button v-for="pageNumber in pages.slice(page-1, page+5)" @click="page = pageNumber">
+                {{pageNumber}}
+            </button>
+            <button @click="page++" v-if="page < pages.length" class="btn btn-sm btn-outline-secondary"> Next
+            </button>
         </div>
     </div>
+
+
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.js"></script>

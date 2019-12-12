@@ -1,6 +1,5 @@
 .post-body {
-    background-color: $postBgColor;
-    width: 80vw;    
+    background-color: $postBgColor;   
     min-height: 300px;
     display: flex;
     flex-direction: column;
@@ -11,6 +10,7 @@
     max-width: 1000px;
     box-shadow: -7px -5px 5px 0px rgba(0,0,0,0.75);
     position: relative;
+    margin: 40px;
     @media(min-width:576px) {
         min-height: 200px;
     }
@@ -24,11 +24,8 @@
         align-items: center;
         background-color: darken($containerBg, 30%);
         width: 100%;
-        padding: 15px 0;
-        @media (min-width:768px) {
-            flex-direction: row;
-            justify-content: space-between;
-        }
+        padding: 20px 0;
+       
         .post-name {
             text-align: center;
             margin: 0 auto;
@@ -39,9 +36,7 @@
             .post-autor, .post-id {
                 color: white; 
                 padding: 5px 10px;
-                @media (min-width:768px) {
-                    margin-right: 40px;
-                }
+              
             }
     }
     .post-content {  
@@ -58,9 +53,8 @@
             justify-self: flex-start;
         }
         .seeMore {
-            padding-top: 10px;
-        width: 30%;
-        margin-right: 20px;
+        padding-top: 10px;
+       margin-right: 5px;
         color: red;
         cursor: pointer;
         }

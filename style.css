@@ -1,16 +1,27 @@
 .container {
   background-color: #E9EBEE;
+  width: 100%;
   padding: 20px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
 }
 
-.container .header {
+@media (min-width: 768px) {
+  .container {
+    -ms-grid-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
+  }
+}
+
+.header {
   text-align: center;
   margin: 10px;
 }
 
 .post-body {
   background-color: white;
-  width: 80vw;
   min-height: 300px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -31,6 +42,7 @@
   -webkit-box-shadow: -7px -5px 5px 0px rgba(0, 0, 0, 0.75);
           box-shadow: -7px -5px 5px 0px rgba(0, 0, 0, 0.75);
   position: relative;
+  margin: 40px;
 }
 
 @media (min-width: 576px) {
@@ -60,19 +72,7 @@
           align-items: center;
   background-color: #939dab;
   width: 100%;
-  padding: 15px 0;
-}
-
-@media (min-width: 768px) {
-  .post-body .post-title {
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
-  }
+  padding: 20px 0;
 }
 
 .post-body .post-title .post-name {
@@ -86,12 +86,6 @@
 .post-body .post-title .post-autor, .post-body .post-title .post-id {
   color: white;
   padding: 5px 10px;
-}
-
-@media (min-width: 768px) {
-  .post-body .post-title .post-autor, .post-body .post-title .post-id {
-    margin-right: 40px;
-  }
 }
 
 .post-body .post-content {
@@ -123,8 +117,7 @@
 
 .post-body .post-content .seeMore {
   padding-top: 10px;
-  width: 30%;
-  margin-right: 20px;
+  margin-right: 5px;
   color: red;
   cursor: pointer;
 }
@@ -142,6 +135,8 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  background-color: #E9EBEE;
+  padding-bottom: 20px;
 }
 
 .pagination button {
