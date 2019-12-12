@@ -41,8 +41,13 @@ const app = new Vue({
         },
 
         readMore(post) {
+            let number = ""
             let string = post.id.toString();
-            let number = string.charAt(1)
+            if (post.id >= 100) {
+                number = string.charAt(2)
+            } else {
+                number = string.charAt(1)
+            }
 
             let id = ""
             if (post.id <= 10) {
@@ -55,11 +60,8 @@ const app = new Vue({
                 }
             }
 
-
-
             let text = document.querySelectorAll(".short-content")[id];
             let seeMore = document.querySelectorAll(".seeMore")[id];
-
 
             if (text.classList.contains('open')) {
                 text.textContent = post.body.slice(0, 30)
@@ -78,7 +80,6 @@ const app = new Vue({
             fetch(`https://jsonplaceholder.typicode.com/comments/${post.id}`, {
                 method: 'DELETE'
             })
-
         }
     },
     created() {
