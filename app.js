@@ -6,7 +6,6 @@ const app = new Vue({
         page: 1,
         perPage: 10,
         pages: [],
-        isActive: false,
         errored: false,
         loading: true,
     },
@@ -17,7 +16,7 @@ const app = new Vue({
                     this.posts = response.data;
                 })
                 .catch(response => {
-                    console.log(response);
+                    console.log(error);
                     this.errored = true
                 })
                 .finally(() => this.loading = false)

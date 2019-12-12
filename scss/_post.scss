@@ -18,7 +18,7 @@
         &:hover {
             transform: translateY(-5px);
         }
-        
+
     .post-title {
         display: flex;
         flex-direction: column;
@@ -37,8 +37,7 @@
         }
             .post-autor, .post-id {
                 color: white; 
-                padding: 5px 10px;
-              
+                padding: 5px 10px;              
             }
     }
     .post-content {  
@@ -47,18 +46,19 @@
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-        align-items: flex-start;
+        align-items: center;
         .short-content {          
             max-width: 60%;
-            padding-top: 10px;
-            padding-left: 10px;
+            padding: 10px;
             justify-self: flex-start;
         }
         .seeMore {
-        padding-top: 10px;
-       margin-right: 5px;
+        padding: 5px;
+        margin-right: 5px;
         color: red;
         cursor: pointer;
+        align-self: center;
+        text-align: center;
         }
     }
     .close-button {
