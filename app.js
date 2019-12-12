@@ -38,7 +38,7 @@ const app = new Vue({
         },
 
         readMore(post) {
-            let text = document.querySelectorAll(".post-content")[post.id - 1];
+            let text = document.querySelectorAll(".short-content")[post.id - 1];
 
             if (text.classList.contains('open')) {
                 text.textContent = post.body.slice(0, 30)

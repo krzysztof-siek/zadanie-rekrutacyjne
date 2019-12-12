@@ -1,0 +1,19 @@
+.pagination {
+    display: flex;
+    justify-content: center;
+    button{
+        background-color:$postTitleColor;
+        // color: white;
+        // margin: 5px;
+        padding: 10px;
+        border: 1px solid black;
+        &:first-child {
+            border-top-left-radius: 15px;
+            border-bottom-left-radius: 15px;
+        }
+        &:last-child {
+            border-top-right-radius: 15px;
+            border-bottom-right-radius: 15px;
+        }
+    }
+}

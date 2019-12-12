@@ -7,20 +7,28 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>API Post - Zadanie rekrutacyjne</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
 </head>
 
 <body>
     <div id="app">
         <div class="container">
+            <h2 class="header">Api posts - zadanie rekrutacyjne</h2>
+            <h1 class="header">Krzysztof Siek</h1>
             <div class="post" v-for="post in displayedPosts">
                 <div class="post-body">
                     <div class="post-title">
-                        <h5><span> {{post.id}}</span> {{post.name}}</h5>
+                        <span class="post-id"> {{post.id}}</span>
+                        <h5 class="post-name"> {{post.name}} </h5>
+                        <span class="post-autor">{{post.email}}</span>
+                        <span class="close-button"><i class="fas fa-window-close fa-2x"></i></span>
                     </div>
-                    <p class="post-content">{{post.body.slice(0, 30)}}...</p>
-                    <button @click="readMore(post)">Zobacz więcej...</button>
-                    <h5 class="post-autor">{{post.email}}</h5>
-                    <button>Close</button>
+                    <div class="post-content">
+                        <p class="short-content">{{post.body.slice(0, 30)}}...</p>
+                        <p class="seeMore" @click="readMore(post)">Zobacz więcej...</p>
+                    </div>
+
+
                 </div>
             </div>
 
