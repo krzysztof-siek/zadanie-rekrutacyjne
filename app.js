@@ -41,20 +41,21 @@ const app = new Vue({
         },
 
         readMore(post) {
+            let string = post.id.toString();
+            let number = string.charAt(1)
+
             let id = ""
             if (post.id <= 10) {
                 id = post.id - 1
-            } else if (post.id > 10 && post.id <= 20) {
-                id = post.id - 11
-            } else if (post.id > 20 && post.id <= 30) {
-                id = post.id - 21
-            } else if (post.id > 30 && post.id <= 40) {
-                id = post.id - 31
-            } else if (post.id > 40 && post.id <= 50) {
-                id = post.id - 41
-            } else if (post.id > 50 && post.id <= 60) {
-                id = post.id - 50
+            } else {
+                if (number == 0) {
+                    id = 9
+                } else {
+                    id = number - 1
+                }
             }
+
+
 
             let text = document.querySelectorAll(".short-content")[id];
             let seeMore = document.querySelectorAll(".seeMore")[id];
