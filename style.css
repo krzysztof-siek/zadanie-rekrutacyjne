@@ -156,7 +156,8 @@
 }
 
 .pagination .active {
-  color: #2d2db1;
+  color: white;
+  background-color: #2d2db1;
   font-weight: bold;
 }
 

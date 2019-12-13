@@ -4,7 +4,8 @@
     padding-bottom: 20px;
    
     .active {
-        color: $myActive;
+        color: white;
+        background-color: $myActive;
         font-weight: bold;
     }
     button{
