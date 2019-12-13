@@ -1,3 +1,4 @@
+
 const app = new Vue({
     el: '#app',
     data: {
@@ -43,6 +44,8 @@ const app = new Vue({
             for (let index = 1; index <= numberOfPages; index++) {
                 this.pages.push(index);
             }
+
+
         },
         paginate(posts) {
             let page = this.page;
@@ -66,6 +69,7 @@ const app = new Vue({
                     id = number - 1
                 }
             }
+
 
             let text = document.querySelectorAll(".short-content")[id];
             let seeMore = document.querySelectorAll(".seeMore")[id];
@@ -92,17 +96,15 @@ const app = new Vue({
         this.getPosts();
         this.getUsers();
         this.shortTitle()
-
     },
     watch: {
         posts() {
             this.setPages();
+
         }
     },
     computed: {
         displayedPosts() {
-            let page = document.querySelector('.pages')
-            page.classList.add("active")
             return this.paginate(this.posts);
         }
     },
