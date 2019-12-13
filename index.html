@@ -23,6 +23,7 @@
                 <div class="post-body">
                     <div class="post-title">
                         <h5 class="post-name"> {{post.title}} </h5>
+                        <p>{{post.id}}</p>
                         <p class="post-autor">Author: <span> {{users[post.userId - 1]}}</span></p>
                         <span class="close-button" @click="deletePost(post)"><i
                                 class="fas fa-window-close fa-2x"></i></span>
@@ -36,7 +37,8 @@
         </div>
         <div class="pagination">
             <button v-if="page != 1" @click="page--">Previous
-            </button> <button v-for="pageNumber in pages.slice(page-1, page+2)" @click="page = pageNumber">
+            </button> <button class="pages" v-for="pageNumber in pages.slice(page-1, page+2)"
+                @click="page = pageNumber">
                 {{pageNumber}}
             </button>
             <button @click="page++" v-if="page < pages.length" class="btn btn-sm btn-outline-secondary"> Next

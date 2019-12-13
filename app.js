@@ -26,8 +26,6 @@ const app = new Vue({
             axios.get(this.baseUrl + 'users')
                 .then(response => {
                     this.users = response.data.map(el => el.name);
-
-
                 })
                 .catch(response => {
                     console.log(error);
@@ -54,16 +52,10 @@ const app = new Vue({
             return posts.slice(from, to);
         },
 
-        // Zmienić tutaj bo już nie ma więcej niż 100 postów
         readMore(post) {
             let number = ""
             let string = post.id.toString();
-            if (post.id >= 100) {
-                number = string.charAt(2)
-            } else {
-                number = string.charAt(1)
-            }
-
+            number = string.charAt(1)
             let id = ""
             if (post.id <= 10) {
                 id = post.id - 1
@@ -74,6 +66,7 @@ const app = new Vue({
                     id = number - 1
                 }
             }
+
 
             let text = document.querySelectorAll(".short-content")[id];
             let seeMore = document.querySelectorAll(".seeMore")[id];
@@ -87,6 +80,7 @@ const app = new Vue({
                 text.textContent = post.body
                 seeMore.textContent = "Zobacz mniej..."
             }
+
         },
         deletePost(post) {
             alert(`UWAGA!  Post ${post.name} zostaje usunięty!`)
@@ -108,15 +102,9 @@ const app = new Vue({
     },
     computed: {
         displayedPosts() {
-            // dodawanie klasy aktywnej - ogarnąć bo nie działa dobrze 
-            let pages = document.querySelectorAll('.pagination > button')
-            pages.forEach(el => el.classList.remove('active'))
-            if (this.page == 1) {
-                pages[1].classList.add('active')
-            } else {
-                pages[1].classList.add('active')
-            }
-            // koniec 
+            let page = document.querySelector('.pages')
+            page.classList.add("active")
+
             return this.paginate(this.posts);
         }
     },

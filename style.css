@@ -157,6 +157,7 @@
 
 .pagination .active {
   color: red;
+  font-weight: bold;
 }
 
 .pagination button {
