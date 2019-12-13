@@ -14,11 +14,11 @@
     <div class="app" id="app">
         <h2 class="header">Api posts - zadanie rekrutacyjne</h2>
         <h1 class="header">Krzysztof Siek</h1>
-        <section v-if="errored">
+        <section v-if="errored" class="error">
             <p>Przepraszamy, ale nie możemy wyświetlić w tej chwili postów. Prosimy spróbować później...</p>
         </section>
         <div v-else class="container">
-            <div v-if="loading">Loading...</div>
+            <div v-if="loading" class="loading">Loading...</div>
             <div v-else class="post" v-for="post in displayedPosts" :key="post.id">
                 <div class="post-body">
                     <div class="post-title">
@@ -43,7 +43,6 @@
             <button @click="page++" v-if="page < pages.length" class="btn btn-sm btn-outline-secondary"> Next
             </button>
         </div>
-        <h2>{{page}}</h2>
     </div>
 
 

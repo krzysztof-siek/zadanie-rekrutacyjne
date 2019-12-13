@@ -15,10 +15,10 @@ const app = new Vue({
         getPosts() {
             axios.get(this.baseUrl + 'posts')
                 .then(response => {
-                    this.posts = response.data;
+                    this.posts = response.data
                 })
                 .catch(response => {
-                    console.log(error);
+                    console.log("coś nie pykło");
                     this.errored = true
                 })
                 .finally(() => this.loading = false)
@@ -29,7 +29,7 @@ const app = new Vue({
                     this.users = response.data.map(el => el.name);
                 })
                 .catch(response => {
-                    console.log(error);
+                    console.log("coś nie pykło");
                     this.errored = true
                 })
                 .finally(() => this.loading = false)
