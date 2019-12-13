@@ -23,9 +23,8 @@
                 <div class="post-body">
                     <div class="post-title">
                         <h5 class="post-name"> {{post.title}} </h5>
-                        <p>{{post.id}}</p>
                         <p class="post-autor">Author: <span> {{users[post.userId - 1]}}</span></p>
-                        <span class="close-button" @click="deletePost(post)"><i
+                        <span class="close-button" @click="deletePost(post.id)"><i
                                 class="fas fa-window-close fa-2x"></i></span>
                     </div>
                     <div class="post-content">

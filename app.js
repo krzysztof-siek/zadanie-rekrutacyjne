@@ -67,7 +67,6 @@ const app = new Vue({
                 }
             }
 
-
             let text = document.querySelectorAll(".short-content")[id];
             let seeMore = document.querySelectorAll(".seeMore")[id];
 
@@ -83,7 +82,7 @@ const app = new Vue({
 
         },
         deletePost(post) {
-            alert(`UWAGA!  Post ${post.name} zostaje usunięty!`)
+            alert(`UWAGA!  Post o id: ${post} zostaje usunięty!`)
             fetch(`https://jsonplaceholder.typicode.com/comments/${post.id}`, {
                 method: 'DELETE'
             })
@@ -104,7 +103,6 @@ const app = new Vue({
         displayedPosts() {
             let page = document.querySelector('.pages')
             page.classList.add("active")
-
             return this.paginate(this.posts);
         }
     },
