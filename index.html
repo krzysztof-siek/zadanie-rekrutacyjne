@@ -21,16 +21,16 @@
             <div v-if="loading" class="loading">Loading...</div>
             <div v-else class="post" v-for="post in displayedPosts" :key="post.id">
                 <div class="post-body">
+                    <img src="./img/postBg.jpg" alt="">
                     <div class="post-title">
                         <h5 class="post-name"> {{post.title}} </h5>
                         <p class="post-autor">Author: <span> {{users[post.userId - 1]}}</span></p>
                         <span class="close-button" @click="deletePost(post.id)"><i
                                 class="fas fa-window-close fa-2x"></i></span>
                     </div>
-                    <div class="post-content">
-                        <p class="short-content">{{post.body.slice(0, 30)}}...</p>
-                        <button class="seeMore" @click="readMore(post)">Zobacz więcej...</button>
-                    </div>
+                    <p class="short-content">{{post.body.slice(0, 30)}}...</p>
+
+                    <button class="seeMore" @click="readMore(post)">Zobacz więcej...</button>
                 </div>
             </div>
         </div>
